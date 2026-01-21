@@ -5,10 +5,9 @@
  * @returns {object} adder function
  */
 function createAdder(start) {
-  let sum = start;
   return function (value) {
-    sum += value;
-    return sum;
+    start += value;
+    return start;
   };
 }
 
