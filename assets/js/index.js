@@ -3,11 +3,8 @@
  * @param {string} prefix prefix value
  * @returns
  */
-function createLogger(prefix) {
-  return function (message) {
-    console.log(`${prefix}: ${message}`);
-  };
-}
+const createLogger = (prefix) => (message) =>
+  console.log(`${prefix}: ${message}`);
 
 // Перевірка роботи функції
 const authLogger = createLogger('AUTH');
