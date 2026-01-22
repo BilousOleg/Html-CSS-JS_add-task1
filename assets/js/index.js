@@ -4,12 +4,8 @@
  * @param {number} start
  * @returns {object} adder function
  */
-function createAdder(start) {
-  return function (value) {
-    start += value;
-    return start;
-  };
-}
+
+const createAdder = (start) => (value) => (start += value);
 
 // Приклад використання функції та замикання
 const adder = createAdder(10);
