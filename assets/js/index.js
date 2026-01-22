@@ -21,10 +21,10 @@ console.log(adder2(100));
 
 // Завдання 2
 
-/*
+/**
  * Function gets prefix and returns function that uses prefix and input message to log them using closure
  * @param {string} prefix prefix value
- * @returns
+ * @returns {object} logger function that will use prefix
  */
 const createLogger = (prefix) => (message) =>
   console.log(`${prefix}: ${message}`);
@@ -38,9 +38,14 @@ apiLogger('Request failed'); // API: Request failed
 
 // Завдання 3
 
-function createLimiter(limit) {
+/**
+ * Function gets limit of calls, create counter and returns function that can't be called more than [limit] times using closure
+ * @param {number} limit limit of function calls
+ * @returns {object} another function to call
+ */
+const createLimiter = (limit) => {
   let callsCount = 0;
-  return function () {
+  return () => {
     if (callsCount >= limit) {
       // Оператор throw для генерації та викидання "кастомної" помилки
       throw new Error('Exceeded function call limit');
@@ -49,9 +54,12 @@ function createLimiter(limit) {
     console.log('Hello');
     callsCount++;
   };
-}
+};
 
 const limited = createLimiter(2);
 limited();
 limited();
 limited();
+
+// В цьому завданні стрілочна функція не дає такого сильного ефекту, як у попередніх,
+// тому що окрім повернення (return) виконується ще декілька дій, доводиться все обгортати в фігурні дужки
